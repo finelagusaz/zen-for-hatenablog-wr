@@ -800,21 +800,11 @@ hr {
 .entry-footer {
   margin-top: 10px;
 }
-/* タグ（はてなブログ タグ） */
-.entry-tags {
-  font-size: 70%;
-  font-family: 'Source Code Pro', sans-serif;
-}
-.entry-tags a {
-  color: #999;
-  text-decoration: none;
-}
-.entry-tag {
-  display: inline-block;
-  margin: 0 1em 10px 0;
-}
-.entry-tag-link:hover {
-  color: #555;
+/* タグ（はてなブログ タグ）
+  見た目ははてなの標準スタイルに任せる（デザインテーマ制作の手引きで、タグは上下の余白の調整だけが認められている）
+*/
+.entry-tags-wrapper {
+  margin: 0 0 10px;
 }
 .entry-footer-section {
   font-size: 70%;
@@ -1114,17 +1104,8 @@ hr {
   background-size: cover;
   background-position: center;
 }
-.page-archive .archive-entry-tags {
-  font-size: 70%;
-  font-family: 'Source Code Pro', sans-serif;
-}
-.page-archive .archive-entry-tags a {
-  color: #999;
-  text-decoration: none;
-}
-.page-archive .archive-entry-tags a {
-  display: inline-block;
-  margin: 0 1em 0.5em 0;
+.page-archive .archive-entry-tags-wrapper {
+  margin: 0 0 0.5em;
 }
 /*  import media queries */
 /* Media Queries - Tablet & Smartphone

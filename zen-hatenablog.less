@@ -520,19 +520,12 @@ hr {
     margin-top: 10px;
 }
 
-/* タグ（はてなブログ タグ） */
+/* タグ（はてなブログ タグ）
+  見た目ははてなの標準スタイルに任せる（デザインテーマ制作の手引きで、タグは上下の余白の調整だけが認められている）
+*/
 
-.entry-tags {
-    .meta-text();
-}
-
-.entry-tag {
-    display: inline-block;
-    margin: 0 1em 10px 0;
-}
-
-.entry-tag-link:hover {
-    color: @text;
+.entry-tags-wrapper {
+    margin: 0 0 10px;
 }
 
 .entry-footer-section {
@@ -929,12 +922,8 @@ hr {
         background-position: center;
     }
 
-    .archive-entry-tags {
-        .meta-text();
-        a {
-            display: inline-block;
-            margin: 0 1em .5em 0;
-        }
+    .archive-entry-tags-wrapper {
+        margin: 0 0 .5em; // 見た目は標準スタイルのまま（上の「タグ」を参照）
     }
 }
 
