@@ -10,20 +10,33 @@ ZEN for Hatena Blog は、Tumblr テーマ「[ZEN](http://sanographix.github.com
 
 ## 使い方
 
-ビルド済みの CSS をはてなブログの「デザイン → カスタマイズ → デザインCSS」に貼り付けてください。
+レイアウトは2種類あります。
 
-| ファイル | レイアウト |
+| レイアウト | 内容 |
 | --- | --- |
-| `zen-hatenablog.css` | 1カラム（オリジナルどおり、サイドバーは本文の下に3列） |
-| `zen-hatenablog-2col.css` | 2カラム（サイドバーは本文の右。767px 以下では1カラム） |
+| 1カラム（`zen-hatenablog.css`） | オリジナルどおり。サイドバーは本文の下に3列 |
+| 2カラム（`zen-hatenablog-2col.css`） | サイドバーは本文の右。767px 以下では1カラム |
+
+使い方に合わせて、どちらかのフォルダのファイルを使ってください。
+
+### テーマとして使う（テーマストアへの登録など）
+
+リポジトリ直下の `zen-hatenablog.css` / `zen-hatenablog-2col.css` を使います。先頭にはてなブログのテーマ情報（`Theme:` / `Responsive: yes` など）が入っています。
+
+### デザインCSS に貼って使う
+
+`design-css/` 以下のファイルを、はてなブログの「デザイン → カスタマイズ → デザインCSS」に貼ります。
+
+1. ファイル先頭の `/* Responsive: yes */` の行を、デザインCSS欄のいちばん上に置きます（スマートフォンにもこのデザインを使うために必要です）。
+2. 残りを欄の末尾（テーマの `<system>` ブロックより後ろ）に貼ります。
+
+テーマストア版の旧 ZEN を選んだまま重ねることを想定し、旧版のレイアウト指定を打ち消す指定を含めています。欄の途中では無効になるため、`@charset` とフォントの `@import` は含めていません。旧 ZEN 以外のテーマに重ねる場合は、「headに要素を追加」で Google Fonts の Source Code Pro を読み込んでください。
 
 ## ビルド
 
 ```sh
 npm install
-npm run build        # 両方をビルド
-npm run build:1col   # zen-hatenablog.css のみ
-npm run build:2col   # zen-hatenablog-2col.css のみ
+npm run build   # テーマ用とデザインCSS用の4ファイルを出力
 ```
 
 色・フォント・カラム幅などは `less/_variable.less` で変更できます。
