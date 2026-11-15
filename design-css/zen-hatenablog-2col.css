@@ -906,15 +906,9 @@ hr {
     min-width: 0;
   }
   #box2 {
-    flex: 0 0 260px;
-    margin-left: 60px;
+    flex: 0 0 clamp(200px, calc(80px + 16.6667%), 260px);
+    margin-left: clamp(30px, calc(-30px + 8.3333%), 60px);
     padding-top: 0;
-  }
-}
-@media (767px < width <= 1024px) {
-  #box2 {
-    flex-basis: 200px;
-    margin-left: 30px;
   }
 }
 .hatena-module .hatena-module-title {

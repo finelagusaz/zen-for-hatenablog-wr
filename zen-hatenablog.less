@@ -659,6 +659,17 @@ hr {
     }
 }
 
+// コンテナ幅に比例して @min → @max と連続的に変わる値を返す
+// （2カラムが始まるときのコンテナ幅で @min、コンテナの最大幅で @max。% はコンテナ幅が基準）
+.fluid-by-container(@min, @max) {
+    @w-min: unit(((@bp-phone-max + 1) * unit(@container-fluid) / 100));
+    @w-max: unit((@container-width));
+    @slope: ((unit(@max) - unit(@min)) / (@w-max - @w-min));
+    @offset: round(unit(@min) - @slope * @w-min, 4);
+    @ratio: round(@slope * 100, 4);
+    @result: ~"clamp(@{min}, calc(@{offset}px + @{ratio}%), @{max})";
+}
+
 // 2カラム（タブレット幅以上）: 本文の右にサイドバーを置く
 & when (@columns = 2) {
     @media (width > @bp-phone-max) {
@@ -673,16 +684,9 @@ hr {
         }
 
         #box2 {
-            flex: 0 0 @sidebar-width;
-            margin-left: @sidebar-gap;
+            flex: 0 0 .fluid-by-container(@sidebar-width-min, @sidebar-width)[@result];
+            margin-left: .fluid-by-container(@sidebar-gap-min, @sidebar-gap)[@result];
             padding-top: 0;
-        }
-    }
-
-    @media (@bp-phone-max < width <= @bp-tablet-max) {
-        #box2 {
-            flex-basis: @sidebar-width-tablet;
-            margin-left: @sidebar-gap-tablet;
         }
     }
 }
