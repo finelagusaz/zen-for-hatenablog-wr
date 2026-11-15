@@ -6,6 +6,28 @@ ZEN for Hatena Blog は、Tumblr テーマ「[ZEN](http://sanographix.github.com
 
 見た目だけを移植したので、機能ははてなブログの実装に準拠します。
 
+このリポジトリは [sanographix/zen-for-hatenablog](https://github.com/sanographix/zen-for-hatenablog) をフォークし、現行のはてなブログに合わせてメンテナンスしているものです。
+
+## 使い方
+
+ビルド済みの CSS をはてなブログの「デザイン → カスタマイズ → デザインCSS」に貼り付けてください。
+
+| ファイル | レイアウト |
+| --- | --- |
+| `zen-hatenablog.css` | 1カラム（オリジナルどおり、サイドバーは本文の下に3列） |
+| `zen-hatenablog-2col.css` | 2カラム（サイドバーは本文の右。767px 以下では1カラム） |
+
+## ビルド
+
+```sh
+npm install
+npm run build        # 両方をビルド
+npm run build:1col   # zen-hatenablog.css のみ
+npm run build:2col   # zen-hatenablog-2col.css のみ
+```
+
+色・フォント・カラム幅などは `less/_variable.less` で変更できます。
+
 ## ヘッダナビゲーション
 
 オリジナルの ZEN テーマにあるヘッダナビゲーションを、はてなブログのタイトル下 HTML 記述欄に記述することで再現できます。利用方法は下記の gist を参照してください。

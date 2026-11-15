@@ -4,34 +4,27 @@
 
     #container {
         width: 93.75%;
-        word-wrap: break-word;
+        overflow-wrap: break-word;
         overflow: hidden;
     }
 
-    #main {
-        width: 100%;
-        float: none;
+    & when (@columns = 1) {
+        #box2 .hatena-module {
+            width: 100%;
+        }
     }
 
-    #box2 {
-        width: 100%;
-        float: none;
-    }
-
-    #box2-inner {
-        width: 100%;
-    }
-
-    .hatena-module {
-        width: 100%;
-        float: none;
+    & when (@columns = 2) {
+        #box2 {
+            flex-basis: 200px;
+            margin-left: 30px;
+        }
     }
 
     .entry-header-menu {
         top: -30px;
-        left: 0px;
+        left: 0;
     }
-
 }
 
 /* Media Queries - Small Tablet & Smartphone */
@@ -44,34 +37,26 @@
 
     #container {
         width: 93.75%;
-        word-wrap: break-word;
+        overflow-wrap: break-word;
         overflow: hidden;
         font-size: 90%;
     }
 
-    #main {
-        width: 100%;
-        float: none;
+    & when (@columns = 1) {
+        #box2 .hatena-module {
+            width: 100%;
+        }
     }
 
-    #box2 {
-        width: 100%;
-        float: none;
+    // 2カラム版もスマートフォンでは1カラムに戻す
+    & when (@columns = 2) {
+        #content-inner {
+            display: block;
+        }
+
+        #box2 {
+            margin-left: 0;
+            padding-top: 30px;
+        }
     }
-
-    #box2-inner {
-        width: 100%;
-    }
-
-    .hatena-module {
-        width: 100%;
-        float: none;
-    }
-
-}
-
-/* Media Queries - Smartphone */
-
-@media (max-width: 480px) {
-
 }

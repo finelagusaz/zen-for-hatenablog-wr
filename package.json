@@ -1,0 +1,19 @@
+{
+  "name": "zen-for-hatenablog-wr",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Tumblr テーマ ZEN をはてなブログに移植したデザインテーマ（メンテナンス版）",
+  "license": "MIT",
+  "scripts": {
+    "build": "npm run build:1col && npm run build:2col",
+    "build:1col": "lessc zen-hatenablog.less zen-hatenablog.css",
+    "build:2col": "lessc zen-hatenablog-2col.less zen-hatenablog-2col.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/finelagusaz/zen-for-hatenablog-wr.git"
+  },
+  "devDependencies": {
+    "less": "^4.9.1"
+  }
+}
