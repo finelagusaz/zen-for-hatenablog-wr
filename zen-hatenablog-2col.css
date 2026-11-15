@@ -1,14 +1,18 @@
 @charset "utf-8";
 /*
-  Theme: ZEN
-  Author: Showkaku Sano (@sanographix)
+  Theme: ZEN Ma
+  Author: Fine Lagusaz
   Responsive: yes
   Description:
-    Tumblr テーマ「ZEN」をはてなブログに移植したデザインテーマです。
+    書くことに集中できる、余白（間）を大切にしたデザインテーマです。
+    Showkaku Sano (@sanographix) さんの「ZEN for Hatena Blog」（Tumblr テーマ「ZEN」の移植）をもとに、
+    現行のはてなブログに合わせてメンテナンスしています。
     オリジナル: https://github.com/sanographix/zen-for-hatenablog
-    メンテナンス版: https://github.com/finelagusaz/zen-for-hatenablog-wr
-  (c) 2013 Showkaku Sano
-  Free to use under the MIT license.
+    ZEN Ma: https://github.com/finelagusaz/zen-for-hatenablog-wr
+  Copyright (c) 2013 Showkaku Sano (SANOGRAPHIX.NET)
+  Copyright (c) 2026 Fine Lagusaz
+  Released under the MIT license:
+  https://github.com/finelagusaz/zen-for-hatenablog-wr/blob/master/LICENSE.md
 */
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
 /*  import normalize */

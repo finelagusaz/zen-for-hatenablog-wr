@@ -1,4 +1,4 @@
-// ZEN for Hatena Blog のビルド
+// ZEN Ma のビルド
 //
 // テーマ用（テーマストアへの登録や、テーマとして使う CSS）
 //   zen-hatenablog.css / zen-hatenablog-2col.css
@@ -27,7 +27,7 @@ async function compile(source, filename) {
 function designCssHeader(label) {
     return `/* Responsive: yes */
 /*
-  ZEN for Hatena Blog（メンテナンス版）デザインCSS用 - ${label}
+  ZEN Ma デザインCSS用 - ${label}
   https://github.com/finelagusaz/zen-for-hatenablog-wr
 
   使い方:
@@ -37,7 +37,10 @@ function designCssHeader(label) {
   フォント（Source Code Pro）はテーマ側で読み込む前提です。
   旧版 ZEN 以外のテーマに重ねる場合は、「headに要素を追加」で Google Fonts を読み込んでください。
 
-  (c) 2013 Showkaku Sano / Free to use under the MIT license.
+  Copyright (c) 2013 Showkaku Sano (SANOGRAPHIX.NET)
+  Copyright (c) 2026 Fine Lagusaz
+  Released under the MIT license:
+  https://github.com/finelagusaz/zen-for-hatenablog-wr/blob/master/LICENSE.md
 */
 `;
 }
