@@ -2,7 +2,7 @@
   "name": "zen-for-hatenablog-wr",
   "version": "2.0.0",
   "private": true,
-  "description": "Tumblr テーマ ZEN をはてなブログに移植したデザインテーマ（メンテナンス版）",
+  "description": "ZEN Ma - ZEN for Hatena Blog をもとにメンテナンスしたはてなブログのデザインテーマ",
   "license": "MIT",
   "scripts": {
     "build": "node scripts/build.mjs"

@@ -1,4 +1,4 @@
-# ZEN for Hatena Blog（メンテナンス版）
+# ZEN Ma（ZEN for Hatena Blog のメンテナンス版）
 
 - `npm run build` - .less から zen-hatenablog(-2col).css と design-css/*.css を生成。.css は手で編集せず、.less と一緒にコミット
 - レイアウト変数は `less/_variable.less`。2カラム版は `zen-hatenablog-2col.less` が `@columns` / `@container-width` を上書き

@@ -1,12 +1,12 @@
-zen-for-hatenablog
-==================
+ZEN Ma
+======
 
 
-ZEN for Hatena Blog は、Tumblr テーマ「[ZEN](http://sanographix.github.com/tumblr/zen)」をはてなブログに移植したデザインテーマです。
+ZEN Ma は、書くことに集中できる、余白（間）を大切にしたはてなブログのデザインテーマです。
+
+Tumblr テーマ「[ZEN](http://sanographix.github.com/tumblr/zen)」をはてなブログに移植した [ZEN for Hatena Blog](https://github.com/sanographix/zen-for-hatenablog)（Showkaku Sano 作）をフォークし、現行のはてなブログに合わせてメンテナンスしています。
 
 見た目だけを移植したので、機能ははてなブログの実装に準拠します。
-
-このリポジトリは [sanographix/zen-for-hatenablog](https://github.com/sanographix/zen-for-hatenablog) をフォークし、現行のはてなブログに合わせてメンテナンスしているものです。
 
 ## 使い方
 
@@ -51,21 +51,25 @@ npm run build   # テーマ用とデザインCSS用の4ファイルを出力
 
 ## Author
 
-#### Showkaku Sano (sanographix)
+#### オリジナル: Showkaku Sano (sanographix)
 
 * [http://www.sanographix.net/](http://www.sanographix.net/)
 * [Twitter: @sanographix](https://twitter.com/sanographix)
 * [GitHub: sanographix](https://github.com/sanographix)
 
-本テーマの利用に関するいかなる被害・損害について、作者は一切の責任を負わないものとします。
+#### ZEN Ma: Fine Lagusaz
 
+* [GitHub: finelagusaz](https://github.com/finelagusaz)
+
+本テーマの利用に関するいかなる被害・損害について、作者は一切の責任を負わないものとします。
 
 ## License
 
+MIT License です。全文は [LICENSE.md](LICENSE.md) を参照してください。
+
+```
 Copyright (c) SANOGRAPHIX.NET
+Copyright (c) 2026 Fine Lagusaz
+```
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+同梱・利用している第三者の成果物（normalize.css、Source Code Pro）のライセンスは [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) にまとめています。
