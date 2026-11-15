@@ -132,7 +132,8 @@ a.keyword {
 /* container */
 
 #container {
-    width: @container-width;
+    width: 93.75%; // 狭い画面では可変、広い画面では @container-width で止める
+    max-width: @container-width;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 30px;
