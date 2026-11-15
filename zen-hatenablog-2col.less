@@ -4,4 +4,4 @@
 @import "zen-hatenablog.less";
 
 @columns: 2;
-@container-width: 1080px; // 本文 760px = 1080 - サイドバー 260 - 間隔 60
+@container-width: (@content-width + @sidebar-width + @sidebar-gap);
