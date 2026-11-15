@@ -1,77 +1,24 @@
-/* Media Queries - Tablet */
+/* Media Queries - Tablet & Smartphone
+  カラム数に依存するレイアウトは zen-hatenablog.less の sidebar の節にまとめています
+*/
 
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (width <= @bp-tablet-max) {
 
     #container {
         width: 93.75%;
-        word-wrap: break-word;
         overflow: hidden;
     }
-
-    #main {
-        width: 100%;
-        float: none;
-    }
-
-    #box2 {
-        width: 100%;
-        float: none;
-    }
-
-    #box2-inner {
-        width: 100%;
-    }
-
-    .hatena-module {
-        width: 100%;
-        float: none;
-    }
-
-    .entry-header-menu {
-        top: -30px;
-        left: 0px;
-    }
-
 }
 
 /* Media Queries - Small Tablet & Smartphone */
 
-@media (max-width: 767px) {
+@media (width <= @bp-phone-max) {
 
     #globalheader-container {
         position: static;
     }
 
     #container {
-        width: 93.75%;
-        word-wrap: break-word;
-        overflow: hidden;
         font-size: 90%;
     }
-
-    #main {
-        width: 100%;
-        float: none;
-    }
-
-    #box2 {
-        width: 100%;
-        float: none;
-    }
-
-    #box2-inner {
-        width: 100%;
-    }
-
-    .hatena-module {
-        width: 100%;
-        float: none;
-    }
-
-}
-
-/* Media Queries - Smartphone */
-
-@media (max-width: 480px) {
-
 }

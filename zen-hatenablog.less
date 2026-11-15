@@ -1,31 +1,62 @@
 @charset "utf-8";
 
 /*
-  Theme: Zen
-  by @sanographix
-  http://www.sanographix.net
-  (c) 2013 Showkaku Sano [sanographix@gmail.com]
+  Theme: ZEN
+  Author: Showkaku Sano (@sanographix)
+  Responsive: yes
+  Description:
+    Tumblr テーマ「ZEN」をはてなブログに移植したデザインテーマです。
+    オリジナル: https://github.com/sanographix/zen-for-hatenablog
+    メンテナンス版: https://github.com/finelagusaz/zen-for-hatenablog-wr
+  (c) 2013 Showkaku Sano
   Free to use under the MIT license.
 */
 
-@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+@import (css) url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
 
 /*  import normalize */
 @import "less/_normalize.less";
 
-/*  import mixin */
-@import "less/_mixin.less";
-
 /*  import variable */
 @import "less/_variable.less";
+
+/* normalize v2 からの差分を補う（v2 との違いで見た目が変わらないように） */
+
+html {
+    line-height: normal; // v8 の 1.15 だと日本語の行間が詰まるため、v2 と同じ既定値に戻す
+}
+
+figure {
+    margin: 0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+pre {
+    white-space: pre-wrap;
+}
 
 /* Common */
 
 html,
 body {
-    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'Hiragino Kaku Gothic Pro', 'Meiryo', 'MS PGothic', sans-serif;
+    font-family: @font-base;
     color: @text;
     background-color: @background;
+    overflow-wrap: break-word;
+}
+
+// 日付・タグ・記事フッタなどの小さなメタ情報
+.meta-text() {
+    font-size: 70%;
+    font-family: @font-accent;
+    a {
+        color: @text-light;
+        text-decoration: none;
+    }
 }
 
 a {
@@ -38,9 +69,10 @@ a {
     }
 }
 
-
-h1,h2,h3,h4,h5,h6 {
-    a,a:hover,a:visited {
+h1, h2, h3, h4, h5, h6 {
+    a,
+    a:hover,
+    a:visited {
         color: @text-header;
         text-decoration: none;
     }
@@ -55,7 +87,7 @@ a.keyword {
 /* Buttons */
 
 .btn {
-    .inline-block;
+    display: inline-block;
     padding: 6px 12px;
     margin-bottom: 0;
     line-height: 18px;
@@ -63,17 +95,15 @@ a.keyword {
     background-color: @btn;
     text-align: center;
     vertical-align: middle;
-    font-family: 'Source Code Pro', sans-serif;
-    .border-radius(2px);
+    font-family: @font-accent;
+    border-radius: 2px;
     cursor: pointer;
     font-size: 12px;
-    text-decoration: none;
     font-weight: bold;
-    border: 1px solid rgba(0,0,0,.2);
+    border: 1px solid rgba(0, 0, 0, .2);
     text-decoration: none !important;
     &:hover {
-      background-color: @btn-hover;
-      text-decoration: none !important;
+        background-color: @btn-hover;
     }
 }
 
@@ -90,8 +120,8 @@ a.keyword {
 }
 
 /* ヘッダ（グローバルヘッダ）
-  グローバルヘッダの中はiframeですが、
-  #globalheader-container に背景色や文字色を指定することでirameの中にも色が反映されます。
+  グローバルヘッダの中は iframe ですが、
+  #globalheader-container に背景色や文字色を指定することで iframe の中にも色が反映されます。
 */
 
 #globalheader-container {
@@ -102,14 +132,10 @@ a.keyword {
 /* container */
 
 #container {
-    width: 900px;
+    width: @container-width;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 30px;
-
-    #content {
-        .clearfix;
-    }
 }
 
 /* header */
@@ -118,7 +144,7 @@ a.keyword {
     margin: 30px 0 0 0;
     padding: 30px 0;
     border-top: 1px solid @border;
-    font-family: 'Source Code Pro', sans-serif;
+    font-family: @font-accent;
 }
 
 #title {
@@ -149,18 +175,16 @@ a.keyword {
     #blog-description {
         padding-left: 20px;
     }
-
 }
 
-/* nav */
-
-#top-editarea {
-}
+/* nav
+  タイトル下 HTML に記述するヘッダナビゲーション（README 参照）
+*/
 
 .header-nav {
-    margin: 0px 0 10px;
+    margin: 0 0 10px;
     font-size: 75%;
-    font-family: 'Source Code Pro', sans-serif;
+    font-family: @font-accent;
 
     ul {
         margin: 0;
@@ -186,23 +210,26 @@ a.keyword {
     }
 
     li:last-child a {
-        margin-right: 0px;
+        margin-right: 0;
     }
 }
 
-/* パンくず（カテゴリーページで表示されます） */
+/* パンくず（カテゴリー・記事ページで表示されます） */
 
 #top-box {
     margin: 10px auto 20px;
     font-size: 90%;
 
     .breadcrumb {
-          border: 1px solid @border;
-          padding: 10px;
+        border: 1px solid @border;
+        padding: 10px;
     }
-
 }
 
+.breadcrumb-gt {
+    margin: 0 .5em;
+    color: @text-light;
+}
 
 /* #content */
 
@@ -217,7 +244,7 @@ a.keyword {
     position: relative;
     padding-bottom: 50px;
     margin-bottom: 50px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid @border;
 }
 
 .entry-header {
@@ -230,7 +257,7 @@ a.keyword {
     line-height: 1.3;
     font-size: 160%;
     font-weight: normal;
-    font-family: 'Source Code Pro', sans-serif;
+    font-family: @font-accent;
 }
 
 .entry-title-empty {
@@ -241,7 +268,7 @@ a.keyword {
 
 .date {
     margin-bottom: 15px;
-    font-family: 'Source Code Pro', sans-serif;
+    font-family: @font-accent;
 
     a {
         color: @text-light;
@@ -256,23 +283,25 @@ a.keyword {
 .categories {
     margin-bottom: 10px;
     font-size: 70%;
-    font-family: 'Source Code Pro', sans-serif;
+    font-family: @font-accent;
 
     a {
         color: @text-light;
+        margin-right: .5em;
     }
     &.no-categories {
-        margin: 0;  // カテゴリー無いとき
+        margin: 0; // カテゴリー無いとき
     }
 }
 
-/* 「編集する」ボタン */
+/* 「編集する」ボタン（1カラムの PC 幅では左にはみ出させる。レイアウトの節を参照） */
+
 .entry-header-menu {
     position: absolute;
-    top: 20px;
-    left: -70px;
+    top: -30px;
+    left: 0;
     a {
-        .btn;
+        .btn();
     }
 }
 
@@ -288,17 +317,24 @@ a.keyword {
     }
 
     img,
-    video {
+    video,
+    iframe {
         max-width: 100%;
     }
 
-    // Flickr で max-width 指定したときのアスペクト比をなおす
-     a[title*="Flickr"] img {
-        height: auto !important;
-     }
+    // width/height 属性つき画像を縮小したときに縦横比を保つ
+    // （height だけで縮小指定した画像は属性の高さを尊重する）
+    img[width] {
+        height: auto;
+    }
 
-    h1,h2,h3,h4,h5,h6 {
-        margin: 1.3em 0 0.8em 0;
+    // Flickr で max-width 指定したときのアスペクト比をなおす（インライン style 対策）
+    a[title*="Flickr"] img {
+        height: auto !important;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        margin: 1.3em 0 .8em 0;
         line-height: 1.5;
         font-weight: normal;
     }
@@ -327,15 +363,46 @@ a.keyword {
         font-size: 100%;
     }
 
+    ul,
+    ol {
+        margin: 0 0 1em;
+    }
+
+    li > ul,
+    li > ol {
+        margin-bottom: 0;
+    }
+
+    dl {
+        margin: 0 0 1em;
+    }
+
+    dt {
+        font-weight: bold;
+    }
+
+    dd {
+        margin: 0 0 .5em 1.5em;
+    }
+
     table {
-        border-collapse: collapse;
-        border-spacing: 0;
+        display: block; // 横に長い表はスクロールさせる
+        max-width: 100%;
+        overflow-x: auto;
         margin-bottom: 1em;
+    }
+
+    // Gist 埋め込みの表（行番号付きコード）は表のまま扱う
+    .gist table {
+        display: table;
+        max-width: none;
+        overflow-x: visible;
+        margin-bottom: 0;
     }
 
     table th,
     table td {
-        border: 1px solid #ddd;
+        border: 1px solid @border;
         padding: 5px 10px;
     }
 
@@ -348,8 +415,18 @@ a.keyword {
         margin: 0 0 10px;
         padding: 20px;
         p {
-            margin-top: 0;
-            margin-bottom: 0;
+            margin: 0 0 1em;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+        cite.hatena-citation {
+            display: block;
+            margin-top: 10px;
+            text-align: right;
+            font-size: 85%;
+            font-style: normal;
+            color: @text-light;
         }
     }
 
@@ -358,25 +435,64 @@ a.keyword {
         margin: 0 0 10px;
         padding: 20px;
         white-space: pre;
+        overflow-x: auto;
     }
 
-    pre>code {
+    pre > code {
         margin: 0;
         padding: 0;
         white-space: pre;
         border: 0;
         background: transparent;
-        font-family: 'Monaco', 'Consolas', 'Courier New', Courier, monospace, sans-serif;
+        font-family: @font-mono;
     }
 
-    code {
+    code,
+    kbd {
         font-size: 90%;
         margin: 0 2px;
         padding: 0 5px;
         border: 1px solid #eaeaea;
         background-color: #f8f8f8;
         border-radius: 3px;
-        font-family: 'Monaco', 'Consolas', 'Courier New', Courier, monospace, sans-serif;
+        font-family: @font-mono;
+    }
+
+    kbd {
+        border-bottom-width: 2px;
+    }
+
+    figure {
+        margin: 0 0 1em;
+    }
+
+    figcaption {
+        margin-top: .5em;
+        font-size: 85%;
+        color: @text-light;
+    }
+
+    summary {
+        cursor: pointer;
+    }
+
+    /* 目次記法 [:contents] */
+    .table-of-contents {
+        padding: 1em 1em 1em 2em;
+        border: 1px solid @border;
+        font-size: 90%;
+    }
+
+    /* 脚注 */
+    div.footnote {
+        margin-top: 2em;
+        padding-top: 1em;
+        border-top: 1px solid @border;
+        font-size: 85%;
+        color: @text-light;
+        p.footnote {
+            margin: 0 0 .5em;
+        }
     }
 
     .hatena-asin-detail {
@@ -384,14 +500,13 @@ a.keyword {
             line-height: 1.4;
         }
     }
-
 }
 
 hr {
     margin: 20px 0;
     border: 0;
-    border-top: 1px solid #eeeeee;
-    border-bottom: 1px solid #ffffff;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #fff;
 }
 
 /* entry-footer */
@@ -400,14 +515,24 @@ hr {
     margin-top: 10px;
 }
 
+/* タグ（はてなブログ タグ） */
+
+.entry-tags {
+    .meta-text();
+}
+
+.entry-tag {
+    display: inline-block;
+    margin: 0 1em 10px 0;
+}
+
+.entry-tag-link:hover {
+    color: @text;
+}
+
 .entry-footer-section {
-    font-size: 70%;
+    .meta-text();
     color: @text-light;
-    font-family: 'Source Code Pro', sans-serif;
-    a {
-        color: @text-light;
-        text-decoration: none;
-    }
 }
 
 .social-buttons,
@@ -415,25 +540,42 @@ hr {
     margin: 10px 0;
 }
 
+/* 記事下モジュール（関連記事など） */
+
+.entry-footer-modules {
+    margin: 30px 0;
+    font-size: 80%;
+}
 
 /* コメント */
 
 .comment-box {
 
-    ul {
+    .comment {
         list-style: none;
         margin: 0 0 15px 0;
         padding: 0;
         font-size: 90%;
     }
 
-    li {
-        padding: 10px 0 10px 60px;
-        border-bottom: 1px solid @border;
-        position: relative;
-        &:first-child {
-            border-top: 1px solid @border;
+    .read-more-comments {
+        font-family: @font-accent;
+    }
+
+    // 先頭の .read-more-comments は非表示のことがあるので、:first-child ではなく
+    // 各行の上と最終行の下に罫線を引く
+    .entry-comment,
+    .read-more-comments {
+        padding: 10px 0;
+        border-top: 1px solid @border;
+        &:last-child {
+            border-bottom: 1px solid @border;
         }
+    }
+
+    .entry-comment {
+        padding-left: 60px;
+        position: relative;
     }
 
     .hatena-id-icon {
@@ -442,14 +584,13 @@ hr {
         left: 0;
         width: 50px !important;
         height: 50px !important;
-        .border-radius(3px);
+        border-radius: 3px;
     }
-
 }
 
 .comment-user-name {
     margin: 0 0 10px 0;
-    font-family: 'Source Code Pro', sans-serif;
+    font-family: @font-accent;
     a {
         text-decoration: none;
     }
@@ -458,7 +599,6 @@ hr {
 .comment-content {
     font-size: 90%;
     margin: 0 0 10px 0;
-    word-wrap: break-word;
 
     p {
         margin: 0 0 10px 0;
@@ -469,52 +609,84 @@ hr {
     font-size: 80%;
     color: @text-light;
     margin: 0;
-    font-family: 'Source Code Pro', sans-serif;
+    font-family: @font-accent;
 
     a {
         color: @text-light;
     }
 }
 
-.read-more-comments {
-    font-family: 'Source Code Pro', sans-serif;
-    padding-left: 0 !important;
-}
-
 .leave-comment-title {
-    .btn;
+    .btn();
 }
 
 /* sidebar */
 
 #box2 {
-    width: 100%;
     padding: 30px 0;
     font-size: 80%;
+
+    .hatena-module {
+        display: flow-root; // float した中身（サムネイル・アイコンなど）を内包する
+        padding-bottom: 40px;
+    }
 }
 
-#box2-inner {
-    width: 960px;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    .clearfix;
-    height: auto;
-    overflow: hidden;
+// 1カラム（PC幅）: サイドバーのモジュールを本文の下に3列で並べ、「編集する」ボタンを左にはみ出させる
+& when (@columns = 1) {
+    @media (width > @bp-tablet-max) {
+        #box2-inner {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -10px;
+        }
+
+        #box2 .hatena-module {
+            box-sizing: border-box;
+            width: 33.3333%;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
+
+    // コンテナ左の余白にボタンが収まる幅のときだけ左へはみ出させる
+    @media (width >= @edit-btn-overhang-min) {
+        .entry-header-menu {
+            top: 20px;
+            left: -70px;
+        }
+    }
+}
+
+// 2カラム（タブレット幅以上）: 本文の右にサイドバーを置く
+& when (@columns = 2) {
+    @media (width > @bp-phone-max) {
+        #content-inner {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        #wrapper {
+            flex: 1 1 auto;
+            min-width: 0; // 長い URL やコードで本文がはみ出さないように
+        }
+
+        #box2 {
+            flex: 0 0 @sidebar-width;
+            margin-left: @sidebar-gap;
+            padding-top: 0;
+        }
+    }
+
+    @media (@bp-phone-max < width <= @bp-tablet-max) {
+        #box2 {
+            flex-basis: @sidebar-width-tablet;
+            margin-left: @sidebar-gap-tablet;
+        }
+    }
 }
 
 .hatena-module {
-    text-align: left;
-    padding-right: 10px;
-    padding-left: 10px;
-    padding-bottom: 40px;
-    width: 283px;
-    float: left;
-    .clearfix;
-
-    &:nth-child(3n+1) {
-        clear: both; //floatの高さ揃える
-    }
 
     .hatena-module-title {
         font-weight: normal;
@@ -530,7 +702,6 @@ hr {
     }
 }
 
-
 /* Profile module */
 
 .hatena-module-profile {
@@ -538,7 +709,7 @@ hr {
     .profile-icon {
         float: left;
         margin: 0 10px 10px 0;
-        .border-radius(5px);
+        border-radius: 5px;
     }
 
     .id {
@@ -550,11 +721,10 @@ hr {
 
     .profile-description {
         font-size: 90%;
-        p{
+        p {
             margin-top: 0;
         }
     }
-
 }
 
 /* urllist module
@@ -563,8 +733,8 @@ hr {
 
 .hatena-urllist {
     list-style: none;
-    margin: 0 0 0 0;
-    padding: 0 0 0 0;
+    margin: 0;
+    padding: 0;
 
     li {
         padding: 8px 0;
@@ -576,6 +746,33 @@ hr {
         }
     }
 
+    .urllist-date-link {
+        font-family: @font-accent;
+        a {
+            color: @text-light;
+        }
+    }
+
+    .urllist-category-link {
+        margin-right: .3em;
+        font-size: 85%;
+    }
+
+    .urllist-entry-body {
+        margin-top: .3em;
+        color: @text-light;
+    }
+
+    // 月別アーカイブの入れ子リスト
+    .archive-module-months {
+        list-style: none;
+        margin: 0;
+        padding: 0 0 0 1em;
+        li {
+            padding: 4px 0;
+            border-bottom: 0;
+        }
+    }
 }
 
 /* Search module */
@@ -584,9 +781,9 @@ hr {
 
     .search-form {
         border: 1px solid @border;
-        .border-radius(3px);
+        border-radius: 3px;
         width: 100%;
-        .border-box;
+        box-sizing: border-box;
         position: relative;
     }
 
@@ -608,14 +805,14 @@ hr {
         border: none;
         outline: none;
         text-indent: -9999px;
+        overflow: hidden;
         position: absolute;
         top: 5px;
         right: 5px;
-        .opacity(.5);
-        .ms-opacity(50);
+        cursor: pointer;
+        opacity: .5;
         &:hover {
-            .opacity(.85);
-            .ms-opacity(85);
+            opacity: .85;
         }
     }
 }
@@ -628,7 +825,7 @@ hr {
     text-align: center;
     border-bottom: 1px solid @border;
     font-size: 80%;
-    font-family: 'Source Code Pro', sans-serif;
+    font-family: @font-accent;
 
     a {
         color: @text-light;
@@ -638,10 +835,9 @@ hr {
         }
     }
 
-    .pager-next {
+    .pager-prev + .pager-next {
         margin-left: 2em;
     }
-
 }
 
 /* Footer */
@@ -652,7 +848,7 @@ hr {
     color: @text-light;
     line-height: 1.5;
     font-size: 70%;
-    font-family: 'Source Code Pro', sans-serif;
+    font-family: @font-accent;
     letter-spacing: .1em;
 
     p {
@@ -663,7 +859,6 @@ hr {
         color: @text-light;
         text-decoration: none;
     }
-
 }
 
 /* About ページ */
@@ -685,11 +880,17 @@ hr {
 
 /* archive ページ */
 
+.archive-header-category {
+    font-family: @font-accent;
+    font-weight: normal;
+}
+
 .page-archive {
 
     .archive-entries {
 
         .archive-entry {
+            display: flow-root; // float したサムネイルを内包する
             margin-bottom: 3em;
         }
 
@@ -705,12 +906,28 @@ hr {
             margin: 0 0 1em;
             line-height: 1.5em;
         }
-
     }
 
+    .entry-thumb-link {
+        float: right;
+        margin: 0 0 1em 1em;
+    }
+
+    .entry-thumb {
+        width: 100px;
+        height: 100px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .archive-entry-tags {
+        .meta-text();
+        a {
+            display: inline-block;
+            margin: 0 1em .5em 0;
+        }
+    }
 }
-
-
 
 /*  import media queries */
 @import "less/_media-queries.less";
