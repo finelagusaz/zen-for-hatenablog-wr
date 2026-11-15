@@ -20,7 +20,11 @@
 /*  import variable */
 @import "less/_variable.less";
 
-/* normalize v2 からの差分を補う（v2 にあり v8 で削られたリセット） */
+/* normalize v2 からの差分を補う（v2 との違いで見た目が変わらないように） */
+
+html {
+    line-height: normal; // v8 の 1.15 だと日本語の行間が詰まるため、v2 と同じ既定値に戻す
+}
 
 figure {
     margin: 0;
@@ -318,8 +322,10 @@ a.keyword {
         max-width: 100%;
     }
 
-    img {
-        height: auto; // width/height 属性つき画像を縮小したときに縦横比を保つ
+    // width/height 属性つき画像を縮小したときに縦横比を保つ
+    // （height だけで縮小指定した画像は属性の高さを尊重する）
+    img[width] {
+        height: auto;
     }
 
     // Flickr で max-width 指定したときのアスペクト比をなおす（インライン style 対策）
@@ -384,6 +390,14 @@ a.keyword {
         max-width: 100%;
         overflow-x: auto;
         margin-bottom: 1em;
+    }
+
+    // Gist 埋め込みの表（行番号付きコード）は表のまま扱う
+    .gist table {
+        display: table;
+        max-width: none;
+        overflow-x: visible;
+        margin-bottom: 0;
     }
 
     table th,
@@ -548,12 +562,14 @@ hr {
         font-family: @font-accent;
     }
 
+    // 先頭の .read-more-comments は非表示のことがあるので、:first-child ではなく
+    // 各行の上と最終行の下に罫線を引く
     .entry-comment,
     .read-more-comments {
         padding: 10px 0;
-        border-bottom: 1px solid @border;
-        &:first-child {
-            border-top: 1px solid @border;
+        border-top: 1px solid @border;
+        &:last-child {
+            border-bottom: 1px solid @border;
         }
     }
 
@@ -611,13 +627,14 @@ hr {
     font-size: 80%;
 
     .hatena-module {
+        display: flow-root; // float した中身（サムネイル・アイコンなど）を内包する
         padding-bottom: 40px;
     }
 }
 
 // 1カラム（PC幅）: サイドバーのモジュールを本文の下に3列で並べ、「編集する」ボタンを左にはみ出させる
 & when (@columns = 1) {
-    @media (min-width: (@bp-tablet-max + 1)) {
+    @media (width > @bp-tablet-max) {
         #box2-inner {
             display: flex;
             flex-wrap: wrap;
@@ -630,7 +647,10 @@ hr {
             padding-left: 10px;
             padding-right: 10px;
         }
+    }
 
+    // コンテナ左の余白にボタンが収まる幅のときだけ左へはみ出させる
+    @media (width >= @edit-btn-overhang-min) {
         .entry-header-menu {
             top: 20px;
             left: -70px;
@@ -640,7 +660,7 @@ hr {
 
 // 2カラム（タブレット幅以上）: 本文の右にサイドバーを置く
 & when (@columns = 2) {
-    @media (min-width: (@bp-phone-max + 1)) {
+    @media (width > @bp-phone-max) {
         #content-inner {
             display: flex;
             align-items: flex-start;
@@ -658,7 +678,7 @@ hr {
         }
     }
 
-    @media (min-width: (@bp-phone-max + 1)) and (max-width: @bp-tablet-max) {
+    @media (@bp-phone-max < width <= @bp-tablet-max) {
         #box2 {
             flex-basis: @sidebar-width-tablet;
             margin-left: @sidebar-gap-tablet;
@@ -667,7 +687,6 @@ hr {
 }
 
 .hatena-module {
-    text-align: left;
 
     .hatena-module-title {
         font-weight: normal;
@@ -686,10 +705,6 @@ hr {
 /* Profile module */
 
 .hatena-module-profile {
-
-    .hatena-module-body {
-        display: flow-root; // float したアイコンを内包する
-    }
 
     .profile-icon {
         float: left;

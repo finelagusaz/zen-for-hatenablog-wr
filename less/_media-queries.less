@@ -2,7 +2,7 @@
   カラム数に依存するレイアウトは zen-hatenablog.less の sidebar の節にまとめています
 */
 
-@media (max-width: @bp-tablet-max) {
+@media (width <= @bp-tablet-max) {
 
     #container {
         width: 93.75%;
@@ -12,7 +12,7 @@
 
 /* Media Queries - Small Tablet & Smartphone */
 
-@media (max-width: @bp-phone-max) {
+@media (width <= @bp-phone-max) {
 
     #globalheader-container {
         position: static;

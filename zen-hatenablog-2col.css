@@ -329,7 +329,10 @@ template {
 /* Border color */
 /* button background */
 /* button hover background */
-/* normalize v2 からの差分を補う（v2 にあり v8 で削られたリセット） */
+/* normalize v2 からの差分を補う（v2 との違いで見た目が変わらないように） */
+html {
+  line-height: normal;
+}
 figure {
   margin: 0;
 }
@@ -598,7 +601,7 @@ a.keyword {
 .entry-content iframe {
   max-width: 100%;
 }
-.entry-content img {
+.entry-content img[width] {
   height: auto;
 }
 .entry-content a[title*="Flickr"] img {
@@ -654,6 +657,12 @@ a.keyword {
   max-width: 100%;
   overflow-x: auto;
   margin-bottom: 1em;
+}
+.entry-content .gist table {
+  display: table;
+  max-width: none;
+  overflow-x: visible;
+  margin-bottom: 0;
 }
 .entry-content table th,
 .entry-content table td {
@@ -796,11 +805,11 @@ hr {
 .comment-box .entry-comment,
 .comment-box .read-more-comments {
   padding: 10px 0;
-  border-bottom: 1px solid #ddd;
-}
-.comment-box .entry-comment:first-child,
-.comment-box .read-more-comments:first-child {
   border-top: 1px solid #ddd;
+}
+.comment-box .entry-comment:last-child,
+.comment-box .read-more-comments:last-child {
+  border-bottom: 1px solid #ddd;
 }
 .comment-box .entry-comment {
   padding-left: 60px;
@@ -863,9 +872,10 @@ hr {
   font-size: 80%;
 }
 #box2 .hatena-module {
+  display: flow-root;
   padding-bottom: 40px;
 }
-@media (min-width: 768px) {
+@media (width > 767px) {
   #content-inner {
     display: flex;
     align-items: flex-start;
@@ -880,14 +890,11 @@ hr {
     padding-top: 0;
   }
 }
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (767px < width <= 1024px) {
   #box2 {
     flex-basis: 200px;
     margin-left: 30px;
   }
-}
-.hatena-module {
-  text-align: left;
 }
 .hatena-module .hatena-module-title {
   font-weight: normal;
@@ -902,9 +909,6 @@ hr {
   text-decoration: underline;
 }
 /* Profile module */
-.hatena-module-profile .hatena-module-body {
-  display: flow-root;
-}
 .hatena-module-profile .profile-icon {
   float: left;
   margin: 0 10px 10px 0;
@@ -1090,14 +1094,14 @@ hr {
 /* Media Queries - Tablet & Smartphone
   カラム数に依存するレイアウトは zen-hatenablog.less の sidebar の節にまとめています
 */
-@media (max-width: 1024px) {
+@media (width <= 1024px) {
   #container {
     width: 93.75%;
     overflow: hidden;
   }
 }
 /* Media Queries - Small Tablet & Smartphone */
-@media (max-width: 767px) {
+@media (width <= 767px) {
   #globalheader-container {
     position: static;
   }
