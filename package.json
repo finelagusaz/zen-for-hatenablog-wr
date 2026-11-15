@@ -1,5 +1,5 @@
 {
-  "name": "zen-for-hatenablog-wr",
+  "name": "zen-ma",
   "version": "2.0.0",
   "private": true,
   "description": "ZEN Ma - ZEN for Hatena Blog をもとにメンテナンスしたはてなブログのデザインテーマ",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/finelagusaz/zen-for-hatenablog-wr.git"
+    "url": "git+https://github.com/finelagusaz/zen-ma.git"
   },
   "devDependencies": {
     "less": "^4.9.1"

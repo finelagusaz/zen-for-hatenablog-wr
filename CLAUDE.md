@@ -7,4 +7,4 @@
 - `less/_legacy-zen-reset.less` - 旧ストア版 ZEN に重ねる用の打ち消し。旧版にもある指定（margin など）を変えたらここに打ち消しを追加
 - 検証: `curl -s -F "file=@<css>;type=text/css" -F output=soap12 -F profile=css3svg -F warning=1 https://jigsaw.w3.org/css-validator/validator` - 基準はエラー 0、警告 18（design-css 17、normalize 由来）
 - 見た目確認はヘッドレス Chrome。最小幅 500px なので 375px は iframe で包む / `--virtual-time-budget=8000`（Webフォント待ち）/ パスは `cygpath -m`、撮影ごとに別の `--user-data-dir`、`--allow-file-access-from-files`
-- リモート: `origin` = finelagusaz/zen-for-hatenablog-wr（PR 先、`gh pr ... --repo` で指定）、`upstream` = 元の sanographix 版
+- リモート: `origin` = finelagusaz/zen-ma（PR 先、`gh pr ... --repo` で指定）、`upstream` = 元の sanographix 版

@@ -59,7 +59,7 @@ function designCssHeader(label) {
     return `/* Responsive: yes */
 /*
   ZEN Ma デザインCSS用 - ${label}
-  https://github.com/finelagusaz/zen-for-hatenablog-wr
+  https://github.com/finelagusaz/zen-ma
 
   使い方:
     1. 上の「Responsive: yes」の行を、デザインCSS欄のいちばん上に置く
@@ -71,7 +71,7 @@ function designCssHeader(label) {
   Copyright (c) 2013 Showkaku Sano (SANOGRAPHIX.NET)
   Copyright (c) 2026 Fine Lagusaz
   Released under the MIT license:
-  https://github.com/finelagusaz/zen-for-hatenablog-wr/blob/master/LICENSE.md
+  https://github.com/finelagusaz/zen-ma/blob/master/LICENSE.md
 
 ${licenseText}
 */
