@@ -25,7 +25,13 @@
 // Layout
 
 @columns: 1;                  // 1 = 1カラム（オリジナル）, 2 = 2カラム（サイドバー右）
-@container-width: 900px;      // 1カラム時のコンテナ幅
-@container-width-2col: 960px; // 2カラム時のコンテナ幅
+@container-width: 900px;      // コンテナ幅（2カラム版では zen-hatenablog-2col.less で上書き）
 @sidebar-width: 260px;        // 2カラム時のサイドバー幅
 @sidebar-gap: 60px;           // 2カラム時の本文とサイドバーの間隔
+@sidebar-width-tablet: 200px; // 2カラム時のサイドバー幅（タブレット幅）
+@sidebar-gap-tablet: 30px;    // 2カラム時の本文とサイドバーの間隔（タブレット幅）
+
+// Breakpoints
+
+@bp-tablet-max: 1024px;       // これ以下はコンテナ幅を可変に
+@bp-phone-max: 767px;         // これ以下はスマートフォン（2カラム版も1カラムに）

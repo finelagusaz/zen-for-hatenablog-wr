@@ -346,6 +346,7 @@ body {
   font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'Hiragino Kaku Gothic Pro', 'Meiryo', 'MS PGothic', sans-serif;
   color: #555;
   background-color: #fff;
+  overflow-wrap: break-word;
 }
 a {
   color: #369ecf;
@@ -423,7 +424,7 @@ a.keyword {
 }
 /* container */
 #container {
-  width: 900px;
+  width: 960px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 30px;
@@ -555,11 +556,11 @@ a.keyword {
 .categories.no-categories {
   margin: 0;
 }
-/* 「編集する」ボタン */
+/* 「編集する」ボタン（1カラムの PC 幅では左にはみ出させる。レイアウトの節を参照） */
 .entry-header-menu {
   position: absolute;
-  top: 20px;
-  left: -70px;
+  top: -30px;
+  left: 0;
 }
 .entry-header-menu a {
   display: inline-block;
@@ -586,7 +587,6 @@ a.keyword {
   font-size: 95%;
   line-height: 1.7;
   padding-bottom: 10px;
-  overflow-wrap: break-word;
   /* 目次記法 [:contents] */
   /* 脚注 */
 }
@@ -594,14 +594,12 @@ a.keyword {
   margin: 0 0 1em 0;
 }
 .entry-content img,
-.entry-content video {
+.entry-content video,
+.entry-content iframe {
   max-width: 100%;
 }
 .entry-content img {
   height: auto;
-}
-.entry-content iframe {
-  max-width: 100%;
 }
 .entry-content a[title*="Flickr"] img {
   height: auto !important;
@@ -638,10 +636,8 @@ a.keyword {
 .entry-content ol {
   margin: 0 0 1em;
 }
-.entry-content ul li > ul,
-.entry-content ol li > ul,
-.entry-content ul li > ol,
-.entry-content ol li > ol {
+.entry-content li > ul,
+.entry-content li > ol {
   margin-bottom: 0;
 }
 .entry-content dl {
@@ -726,13 +722,9 @@ a.keyword {
   cursor: pointer;
 }
 .entry-content .table-of-contents {
-  margin: 0 0 1em;
   padding: 1em 1em 1em 2em;
   border: 1px solid #ddd;
   font-size: 90%;
-}
-.entry-content .table-of-contents li > ul {
-  margin-bottom: 0;
 }
 .entry-content div.footnote {
   margin-top: 2em;
@@ -762,24 +754,21 @@ hr {
   font-size: 70%;
   font-family: 'Source Code Pro', sans-serif;
 }
+.entry-tags a {
+  color: #999;
+  text-decoration: none;
+}
 .entry-tag {
   display: inline-block;
   margin: 0 1em 10px 0;
 }
-.entry-tag-link {
-  color: #999;
-  text-decoration: none;
-}
 .entry-tag-link:hover {
   color: #555;
 }
-.entry-tag-link:visited {
-  color: #999;
-}
 .entry-footer-section {
   font-size: 70%;
-  color: #999;
   font-family: 'Source Code Pro', sans-serif;
+  color: #999;
 }
 .entry-footer-section a {
   color: #999;
@@ -800,6 +789,9 @@ hr {
   margin: 0 0 15px 0;
   padding: 0;
   font-size: 90%;
+}
+.comment-box .read-more-comments {
+  font-family: 'Source Code Pro', sans-serif;
 }
 .comment-box .entry-comment,
 .comment-box .read-more-comments {
@@ -832,7 +824,6 @@ hr {
 .comment-content {
   font-size: 90%;
   margin: 0 0 10px 0;
-  overflow-wrap: break-word;
 }
 .comment-content p {
   margin: 0 0 10px 0;
@@ -845,9 +836,6 @@ hr {
 }
 .comment-metadata a {
   color: #999;
-}
-.read-more-comments {
-  font-family: 'Source Code Pro', sans-serif;
 }
 .leave-comment-title {
   display: inline-block;
@@ -874,28 +862,29 @@ hr {
   padding: 30px 0;
   font-size: 80%;
 }
-#container {
-  width: 960px;
-}
-#content-inner {
-  display: flex;
-  align-items: flex-start;
-}
-#wrapper {
-  flex: 1 1 auto;
-  min-width: 0;
-}
-#box2 {
-  flex: 0 0 260px;
-  margin-left: 60px;
-  padding-top: 0;
-}
 #box2 .hatena-module {
   padding-bottom: 40px;
 }
-.entry-header-menu {
-  top: -30px;
-  left: 0;
+@media (min-width: 768px) {
+  #content-inner {
+    display: flex;
+    align-items: flex-start;
+  }
+  #wrapper {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  #box2 {
+    flex: 0 0 260px;
+    margin-left: 60px;
+    padding-top: 0;
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  #box2 {
+    flex-basis: 200px;
+    margin-left: 30px;
+  }
 }
 .hatena-module {
   text-align: left;
@@ -1090,26 +1079,21 @@ hr {
   font-family: 'Source Code Pro', sans-serif;
 }
 .page-archive .archive-entry-tags a {
-  display: inline-block;
-  margin: 0 1em 0.5em 0;
   color: #999;
   text-decoration: none;
 }
+.page-archive .archive-entry-tags a {
+  display: inline-block;
+  margin: 0 1em 0.5em 0;
+}
 /*  import media queries */
-/* Media Queries - Tablet */
-@media (min-width: 768px) and (max-width: 1024px) {
+/* Media Queries - Tablet & Smartphone
+  カラム数に依存するレイアウトは zen-hatenablog.less の sidebar の節にまとめています
+*/
+@media (max-width: 1024px) {
   #container {
     width: 93.75%;
-    overflow-wrap: break-word;
     overflow: hidden;
-  }
-  #box2 {
-    flex-basis: 200px;
-    margin-left: 30px;
-  }
-  .entry-header-menu {
-    top: -30px;
-    left: 0;
   }
 }
 /* Media Queries - Small Tablet & Smartphone */
@@ -1118,16 +1102,6 @@ hr {
     position: static;
   }
   #container {
-    width: 93.75%;
-    overflow-wrap: break-word;
-    overflow: hidden;
     font-size: 90%;
-  }
-  #content-inner {
-    display: block;
-  }
-  #box2 {
-    margin-left: 0;
-    padding-top: 30px;
   }
 }
