@@ -187,31 +187,29 @@ a.keyword {
     font-size: 75%;
     font-family: @font-accent;
 
+    // 項目は等幅に並べ、文字が収まらない項目だけ文字の幅まで広げる（項目内では折り返さない）
+    // それでも1行に収まらない狭い画面では、項目単位で次の行へ送る
     ul {
         margin: 0;
         padding: 0;
-        display: table;
-        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 30px;
         li {
-            display: table-cell;
-            width: 1%;
+            flex: 1 1 0;
+            min-width: max-content;
         }
     }
     a {
         display: block;
         color: @text;
         border-top: 1px solid @border;
-        margin-right: 30px;
         padding: 10px 0;
         text-decoration: none;
         &:hover {
             border-top: 1px solid #999;
             text-decoration: none;
         }
-    }
-
-    li:last-child a {
-        margin-right: 0;
     }
 }
 

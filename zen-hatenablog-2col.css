@@ -475,27 +475,24 @@ a.keyword {
 .header-nav ul {
   margin: 0;
   padding: 0;
-  display: table;
-  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 30px;
 }
 .header-nav ul li {
-  display: table-cell;
-  width: 1%;
+  flex: 1 1 0;
+  min-width: max-content;
 }
 .header-nav a {
   display: block;
   color: #555;
   border-top: 1px solid #ddd;
-  margin-right: 30px;
   padding: 10px 0;
   text-decoration: none;
 }
 .header-nav a:hover {
   border-top: 1px solid #999;
   text-decoration: none;
-}
-.header-nav li:last-child a {
-  margin-right: 0;
 }
 /* パンくず（カテゴリー・記事ページで表示されます） */
 #top-box {
