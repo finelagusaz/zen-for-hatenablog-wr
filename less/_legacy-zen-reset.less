@@ -1,0 +1,26 @@
+// テーマストア版（旧版）ZEN を選んだまま、デザインCSS で本テーマを重ねるときの打ち消し
+// 旧版にあって本テーマでは上書きされないレイアウト指定だけを無効にする
+
+/* 旧版 ZEN テーマのレイアウト指定を打ち消す */
+
+#box2-inner {
+    width: auto;
+    text-align: left;
+    overflow: visible;
+}
+
+#box2-inner::after,
+.hatena-module::after {
+    content: none; // 旧版の clearfix
+}
+
+.hatena-module {
+    width: auto;
+    float: none;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.comment-box li {
+    border-bottom: 0;
+}

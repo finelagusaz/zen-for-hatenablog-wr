@@ -5,9 +5,7 @@
   "description": "Tumblr テーマ ZEN をはてなブログに移植したデザインテーマ（メンテナンス版）",
   "license": "MIT",
   "scripts": {
-    "build": "lessc zen-hatenablog.less zen-hatenablog.css && lessc zen-hatenablog-2col.less zen-hatenablog-2col.css",
-    "build:1col": "lessc zen-hatenablog.less zen-hatenablog.css",
-    "build:2col": "lessc zen-hatenablog-2col.less zen-hatenablog-2col.css"
+    "build": "node scripts/build.mjs"
   },
   "repository": {
     "type": "git",
